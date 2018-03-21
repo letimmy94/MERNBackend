@@ -1,17 +1,17 @@
-const express = require('express')
-const parser = require('body-parser')
-const cors = require('cors')
+const express = require("express");
+const parser = require("body-parser");
+const cors = require("cors");
+const mongoose = require("./db/Gif.js");
+const app = express();
 
-const app = express()
+const gifsController = require("./controllers/gifs.js");
 
-const gifsController = require('./controllers/gifs')
+app.use(parser.urlencoded({ extended: true }));
+app.use(parser.json());
+app.use(cors());
 
-app.use(parser.urlencoded({extended: true}))
-app.use(parser.json())
-app.use(cors())
+app.set("view engine", "hbs");
 
-app.set('view engine', 'hbs')
+app.use("/gifs", gifsController);
 
-app.use('/gifs', gifsController)
-
-app.listen(3000, () => console.log('Listening on port 3000...'))
+app.listen(3000, () => console.log("Listening on port 3000..."));

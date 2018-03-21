@@ -1,7 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/gaphy')
+if (process.env.NODE_ENV == "production") {
+    mongoose.connect(process.env.MLAB_URL, {useMongoClient: true})
+} else {
+    mongoose.connect("mongodb://localhost/gifboxx", {useMongoClient: true});
+}
 
-mongoose.Promise = Promise
+mongoose.Promise = Promise;
 
-module.exports = mongoose
+module.exports = mongoose;
