@@ -1,4 +1,4 @@
-const Gif = require("../models/Gif.js");
+const Gif = require("./Gif");
 const seedData = require("./seeds.json");
 
 Gif.remove({})

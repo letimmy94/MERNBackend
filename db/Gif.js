@@ -7,4 +7,4 @@ const GifSchema = new mongoose.Schema({
 
 const Gif = mongoose.model("Gif", GifSchema);
 
-module.exports = Gif;
+module.exports = { Gif };

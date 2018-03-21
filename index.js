@@ -6,6 +6,8 @@ const app = express();
 
 const gifsController = require("./controllers/gifs.js");
 
+app.set("port", process.env.PORT || 3000);
+
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 app.use(cors());
@@ -14,4 +16,6 @@ app.set("view engine", "hbs");
 
 app.use("/gifs", gifsController);
 
-app.listen(3000, () => console.log("Listening on port 3000..."));
+app.listen(app.get("port"), () => {
+  console.log(`✅ PORT: ${app.get("port")} 🌟`);
+});
